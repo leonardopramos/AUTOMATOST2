@@ -1,0 +1,29 @@
+/* Trabalho Gustavo Aveline e Leonardo Ramos
+ */
+
+Grammar  ::= Progr Nome Begin Comandos End
+Progr ::= "progr" S
+Nome   ::= Char+ S
+Begin ::= "begin" S
+End ::= "end"
+
+Comandos ::= (Clear | Moveto | Incr | decr | while | if)*
+Comandosgarintido ::= Clear | Moveto | Incr | decr | while | if
+Clear ::= "clear" S variavel ";"
+Moveto ::= "move" S variavel S "to" S variavel ";"
+Incr ::= "incr" S variavel ";"
+decr ::= "decr" S variavel ";"
+
+while ::= "while" S "(" variavel ")" S Comandosgarintido
+if ::= "if" S "(" variavel ")" S "then" S Comandosgarintido S "else" S Comandosgarintido
+
+variavel ::= Char|sublinhado (Char|sublinhado)*
+Char     ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" 
+sublinhado ::= "_"
+valor::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" 
+
+Whitespace
+         ::= S | Comment
+S        ::= #x9 | #xA | #xD | #x20
+Comment  ::= '/*' ( [^*] | '*'+ [^*/] )* '*'* '*/'
+          
